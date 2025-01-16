@@ -674,6 +674,7 @@ ul, ol {
 }
 .about-pic img {
 	min-width: 100%;
+	min-height: 100%;
 }
 /*---------------------
   Service Section
