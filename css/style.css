@@ -2354,3 +2354,78 @@ ul, ol {
 		margin-bottom: 10px;
 	}
 }
+
+/* Global Styles */
+.fortkochi-body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blog-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+}
+
+.blog-post {
+    margin-bottom: 40px;
+}
+
+.blog-post h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.blog-intro {
+    margin-bottom: 20px;
+}
+
+/* Image and Caption Styles */
+.blog-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 22px; /* Add a gap between the figures */
+}
+
+figure {
+    flex: 1 1 calc(50% - 10px); /* Responsive width with space between */
+    text-align: center;
+    margin: 0; /* Remove extra margin for consistency */
+}
+
+figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+figcaption {
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-row {
+        flex-direction: column;
+        gap: 20px; /* Adjust spacing for single-column layout */
+    }
+
+    figure {
+        flex: 1 1 100%; /* Full width for smaller screens */
+    }
+}
