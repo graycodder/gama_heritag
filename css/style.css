@@ -509,6 +509,9 @@ ul, ol {
 	padding-bottom: 100px;
 }
 .hero-section .container {
+	width: 100%; /* or set a specific width, e.g., 1200px */
+    max-width: 1200px; /* Optional for larger screens */
+    margin: 0 auto; /* Center the container */
 	position: relative;
 	z-index: 5;
 }
@@ -517,11 +520,18 @@ ul, ol {
 	color: #5A4D48;
 }
 .hero-text h1 {
+	/*This fixed issu in gama residency y have space*/
 	font-size: 80px;
 	line-height: 90px;
 	color: #ffffff;
 	margin-bottom: 16px;
+	font-size: 70px; /* Reduce font size if it's too large */
+    line-height: 1.2; /* Adjust line spacing */
+    word-wrap: break-word; /* Break long words onto the next line if needed */
+    text-align: left; /* Center-align the text */
+    white-space: normal; /* Ensure the text doesn't try to stay on one line */
 }
+
 .hero-text p {
 	font-size: 18px;
 	color: #ffffff;
@@ -2432,109 +2442,108 @@ figcaption {
 /* Fort kochi end___*/
 /* GCD Heritage Site start */
 .gcd-heritage-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh; /* Full-screen height */
-	width: 100vw; /* Full-screen width */
-	padding: 20px;
-	background-color: #f5f5f5; /* Light gray background */
-	border: none; /* No border for full-screen */
-	box-shadow: none; /* No shadow for full-screen */
-	margin: 0; /* Remove margin */
-	opacity: 0; /* Initial state for fade-in */
-	transform: translateY(20px); /* Initial position for slide effect */
-	animation: fadeIn 1.2s ease-out forwards; /* Fade-in animation */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full-screen height */
+  width: 100vw; /* Full-screen width */
+  padding: 20px;
+  background-color: #f5f5f5; /* Light gray background */
+  border: none; /* No border for full-screen */
+  box-shadow: none; /* No shadow for full-screen */
+  margin: 0; /* Remove margin */
+  opacity: 0; /* Initial state for fade-in */
+  transform: translateY(20px); /* Initial position for slide effect */
+  animation: fadeIn 1.2s ease-out forwards; /* Fade-in animation */
+}
+
+.gcd-heritage-section h2 {
+  font-size: 2rem; /* Responsive font size */
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  word-wrap: break-word; /* Handles long words */
+  animation: slideIn 1.5s ease-out forwards; /* Slide-in animation */
+}
+
+.gcd-heritage-iframe-container {
+  position: relative;
+  width: 100%;
+  height: 70%; /* Occupies 70% of the full screen */
+  overflow: hidden;
+  border: 2px solid #ccc; /* Slight border for iframe container */
+  border-radius: 8px; /* Rounded corners for iframe */
+  opacity: 0; /* Initial state for animation */
+  transform: scale(0.9); /* Initial zoom-out effect */
+  animation: zoomIn 1.5s ease-out forwards 0.5s; /* Zoom-in animation */
+}
+
+.gcd-heritage-iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* No border around the iframe */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
   .gcd-heritage-section h2 {
-	font-size: 2rem; /* Responsive font size */
-	color: #333;
-	margin-bottom: 20px;
-	text-align: center;
-	word-wrap: break-word; /* Handles long words */
-	animation: slideIn 1.5s ease-out forwards; /* Slide-in animation */
+    font-size: 1.5rem; /* Smaller font for mobile */
   }
-  
+
+  .gcd-heritage-section {
+    padding: 10px;
+  }
+
   .gcd-heritage-iframe-container {
-	position: relative;
-	width: 100%;
-	height: 70%; /* Occupies 70% of the full screen */
-	overflow: hidden;
-	border: 2px solid #ccc; /* Slight border for iframe container */
-	border-radius: 8px; /* Rounded corners for iframe */
-	opacity: 0; /* Initial state for animation */
-	transform: scale(0.9); /* Initial zoom-out effect */
-	animation: zoomIn 1.5s ease-out forwards 0.5s; /* Zoom-in animation */
+    height: 65%; /* Slightly smaller height for iframe on smaller screens */
   }
-  
-  .gcd-heritage-iframe-container iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	border: none; /* No border around the iframe */
+}
+
+@media (max-width: 480px) {
+  .gcd-heritage-section h2 {
+    font-size: 1.2rem; /* Even smaller font for very small devices */
   }
-  
-  /* Animations */
-  @keyframes fadeIn {
-	0% {
-	  opacity: 0;
-	  transform: translateY(20px);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateY(0);
-	}
+
+  .gcd-heritage-iframe-container {
+    height: 60%; /* Adjust height for small mobile screens */
   }
-  
-  @keyframes slideIn {
-	0% {
-	  opacity: 0;
-	  transform: translateY(-20px);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateY(0);
-	}
-  }
-  
-  @keyframes zoomIn {
-	0% {
-	  opacity: 0;
-	  transform: scale(0.9);
-	}
-	100% {
-	  opacity: 1;
-	  transform: scale(1);
-	}
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-	.gcd-heritage-section h2 {
-	  font-size: 1.5rem; /* Smaller font for mobile */
-	}
-  
-	.gcd-heritage-section {
-	  padding: 10px;
-	}
-  
-	.gcd-heritage-iframe-container {
-	  height: 65%; /* Slightly smaller height for iframe on smaller screens */
-	}
-  }
-  
-  @media (max-width: 480px) {
-	.gcd-heritage-section h2 {
-	  font-size: 1.2rem; /* Even smaller font for very small devices */
-	}
-  
-	.gcd-heritage-iframe-container {
-	  height: 60%; /* Adjust height for small mobile screens */
-	}
-  }
-  /* GCD Heritage Site end */
-  
+}
+/* GCD Heritage Site end */
