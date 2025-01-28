@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Gama, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/style2.css" type="text/css">
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyChBRVKOJ4xoHBbx5TpS1qvAm-SLhcoYPM",
+            authDomain: "gama-heritage.firebaseapp.com",
+            databaseURL: "https://gama-heritage-default-rtdb.firebaseio.com",
+            projectId: "gama-heritage",
+            storageBucket: "gama-heritage.firebasestorage.app",
+            messagingSenderId: "155574332285",
+            appId: "1:155574332285:web:8e055998eaae5e0567ba14",
+            measurementId: "G-GX9EVBT5EQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("User  is signed in:", user.email);
+            } else {
+                window.location.href = "Admin.html"; // Redirect to login if not authenticated
+            }
+        });
+
+        // Function to update room prices
+        window.updateRoomData = function() {
+            const roomData = {
+                singleRoom: {
+                    price: parseInt(document.getElementById("singleRoomPrice").value),
+                },
+                deluxeRoom: {
+                    price: parseInt(document.getElementById("deluxeRoomPrice").value),
+                },
+                superiorRoom: {
+                    price: parseInt(document.getElementById("superiorRoomPrice").value),
+                },
+                dormetry: {
+                    price: parseInt(document.getElementById("dormetryPrice").value),
+                },
+                banquetHall: {
+                    price: parseInt(document.getElementById("banquetHallPrice").value),
+                }
+            };
+
+            const roomRef = ref(database, 'rooms/');
+            set(roomRef, roomData)
+                .then(() => {
+                    alert("Room data updated successfully!");
+                })
+                .catch((error) => {
+                    alert("Error updating room data: " + error.message);
+                });
+        };
+    </script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Admin Dashboard</h2>
+        <div>
+            <label for="singleRoomPrice">Single Room Price:</label>
+            <input type="number" id="singleRoomPrice" placeholder="Enter price" />
+        </div>
+        <div>
+            <label for="deluxeRoomPrice">Deluxe Room Price:</label>
+            <input type="number" id="deluxeRoomPrice" placeholder="Enter price" />
+        </div>
+        <div>
+            <label for="superiorRoomPrice">Superior Room Price:</label>
+            <input type="number" id="superiorRoomPrice" placeholder="Enter price" />
+        </div>
+        <div>
+            <label for="dormetryPrice">Dormetry Price:</label>
+            <input type="number" id="dormetryPrice" placeholder="Enter price" />
+        </div>
+        <div>
+            <label for="banquetHallPrice">Banquet Hall Price:</label>
+            <input type="number" id="banquetHallPrice" placeholder="Enter price" />
+        </div>
+        <button onclick="updateRoomData()">Update Room Prices</button>
+    </div>
+</body>
+</html>

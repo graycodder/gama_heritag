@@ -1,0 +1,10 @@
+{
+    "rooms": {
+      "singleRoom": { "price": 2200 },
+      "deluxeRoom": { "price": 2800 },
+      "superiorRoom": { "price": 3300 },
+      "dormetry": { "price": 14000 },
+      "banquetHall": { "price": 20000 }
+    }
+  }
+  
