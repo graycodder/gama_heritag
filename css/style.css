@@ -2676,3 +2676,22 @@ figcaption {
 }
 
 /***Cookies Section End ***/
+map-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.responsive-map {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Maintain aspect ratio */
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
