@@ -152,7 +152,7 @@
                     <div class="breadcrumb-text">
                         <h2>Our Rooms</h2>
                         <div class="bt-option">
-                            <a href="./home.html">Home</a>
+                            <a href="./index.html">Home</a>
                             <span>Rooms</span>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                     <div class="room-item">
                         <img src="img/room/superior_r3.jpg" alt="">
                         <div class="ri-text">
-                            <h4>Superior</h4>
+                            <h4>Superior Room</h4>
                             <h3>₹3300<span>/Pernight</span></h3>
                             <table>
                                 <tbody>
@@ -251,7 +251,7 @@
                     <div class="room-item">
                         <img src="img/room/Dormertry_r1.png" alt="">
                         <div class="ri-text">
-                            <h4>Dormetry Rooms</h4>
+                            <h4>Dormetry</h4>
                             <h3>₹14000<span>/Pernight</span></h3>
                             <table>
                                 <tbody>
@@ -291,7 +291,7 @@
                     <div class="room-item">
                         <img src="img/room/Superior2_r2.jpg" alt="">
                         <div class="ri-text">
-                            <h4>Superior</h4>
+                            <h4>Superior Room</h4>
                             <h3>₹3300<span>/Pernight</span></h3>
                             <table>
                                 <tbody>
@@ -325,6 +325,76 @@
         </div>
     </section>
     <!-- Rooms Section End -->
+ <!-- firebase Section end -->
+    <script type="module">
+        // Firebase imports and initialization
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyChBRVKOJ4xoHBbx5TpS1qvAm-SLhcoYPM",
+            authDomain: "gama-heritage.firebaseapp.com",
+            databaseURL: "https://gama-heritage-default-rtdb.firebaseio.com",
+            projectId: "gama-heritage",
+            storageBucket: "gama-heritage.firebasestorage.app",
+            messagingSenderId: "155574332285",
+            appId: "1:155574332285:web:8e055998eaae5e0567ba14",
+            measurementId: "G-GX9EVBT5EQ"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+    
+        // Function to fetch room data from Firebase
+        function fetchRoomData() {
+            const roomRef = ref(database, 'rooms/');
+            onValue(roomRef, (snapshot) => {
+                const data = snapshot.val();
+                updateRoomDisplay(data);
+            });
+        }
+    
+        // Function to update both sections dynamically
+        function updateRoomDisplay(data) {
+            const roomNameToKeyMap = {
+                "Single Room": "singleRoom",
+                "Deluxe Room": "deluxeRoom",
+                "Superior Room": "superiorRoom",
+                "Dormetry": "dormetry",
+                "Banquet hall": "banquetHall",
+                "Superior Room": "superiorRoom",
+            };
+    
+            // ✅ Update First Section (hp-room-section)
+            document.querySelectorAll('.hp-room-item').forEach((roomItem) => {
+                const roomName = roomItem.querySelector('h3').innerText.trim();
+                const firebaseKey = roomNameToKeyMap[roomName];
+    
+                if (firebaseKey && data[firebaseKey]) {
+                    const roomData = data[firebaseKey];
+                    const priceElement = roomItem.querySelector('h2');
+                    priceElement.innerHTML = `₹${roomData.price}<span>/Pernight</span>`;
+                }
+            });
+    
+            // ✅ Update Second Section (rooms-section)
+            document.querySelectorAll('.room-item').forEach((roomItem) => {
+                const roomName = roomItem.querySelector('h4').innerText.trim();
+                const firebaseKey = roomNameToKeyMap[roomName];
+    
+                if (firebaseKey && data[firebaseKey]) {
+                    const roomData = data[firebaseKey];
+                    const priceElement = roomItem.querySelector('h3');
+                    priceElement.innerHTML = `₹${roomData.price}<span>/Pernight</span>`;
+                }
+            });
+        }
+    
+        // Load data when the page loads
+        window.onload = fetchRoomData;
+    </script>
+<!-- firebase Section end -->
     <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
@@ -411,6 +481,8 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
 </body>
 
 </html>
