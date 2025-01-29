@@ -2589,3 +2589,90 @@ figcaption {
     animation: float 2s infinite ease-in-out;
 }
 /* What app icon End*/
+/*** Cookies Section Start ***/
+.cookie-container {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 20px 24px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    text-align: center;
+    transition: bottom 0.5s ease-in-out;
+    z-index: 9999;
+}
+
+.cookie-container.active {
+    bottom: 30px;
+}
+
+.cookie-container p {
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.cookie-container a {
+    color: #ffcc00;
+    text-decoration: underline;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.cookie-container a:hover {
+    color: #ffaa00;
+}
+
+.cookie-btn {
+    background: linear-gradient(135deg, #00b894, #0984e3);
+    border: none;
+    color: white;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.cookie-btn:hover {
+    background: linear-gradient(135deg, #009b79, #0766cc);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .cookie-container {
+        width: 95%;
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    .cookie-btn {
+        padding: 10px 36px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookie-container {
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    .cookie-btn {
+        padding: 8px 30px;
+        font-size: 14px;
+    }
+}
+
+/***Cookies Section End ***/
