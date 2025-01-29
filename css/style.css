@@ -2547,3 +2547,45 @@ figcaption {
   }
 }
 /* GCD Heritage Site end */
+/* What app icon Begin */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* WhatsApp Icon */
+.whatsapp-btn i {
+    font-size: 30px;
+    color: white;
+}
+
+/* Hover Effect */
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+.whatsapp-btn {
+    animation: float 2s infinite ease-in-out;
+}
+/* What app icon End*/
