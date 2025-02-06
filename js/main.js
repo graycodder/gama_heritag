@@ -14,10 +14,11 @@
     /*------------------
         Preloader
     --------------------*/
-    $(window).on('load', function () {
-        $(".loader").fadeOut();
-        $("#preloder").delay(200).fadeOut("slow");
+    $(document).ready(function () {
+        $(".loader").fadeOut(300); // Hide loader in 300ms
+        $("#preloder").fadeOut(500); // Hide preloader in 500ms
     });
+    
 
     /*------------------
         Background Set
